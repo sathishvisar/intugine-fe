@@ -34,30 +34,6 @@ function createData(awb_no, tran, src, dest, brand, sdate, etd, state) {
 
 class Shipments extends React.Component {
     
-    componentDidMount() {
-        let url = "https://93870v1pgk.execute-api.ap-south-1.amazonaws.com/latest/shipments/mayank";
-        let bearer_token = 'tTU3gFVUdP';
-        var bearer = 'Bearer ' + bearer_token;
-        let bodyData = {email: 'sathish.visar@gmail.com'};
-
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Authorization': bearer,
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(bodyData),
-        })
-        .then((response) => response.json())
-        .then((result) => {
-            console.log(result);
-        })
-        .catch((error) => {
-            console.error(error);
-        });
-    }
-
     render(){
         const { classes } = this.props;
 

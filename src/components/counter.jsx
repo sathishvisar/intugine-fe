@@ -19,33 +19,36 @@ const styles = theme => ({
       },
 });
 
+
 class Counter extends React.Component {
 
     render(){
-        const { classes } = this.props;
+        const { classes, counterData } = this.props;
+        console.log(counterData);
 
         return(
             <div>
                 <Grid container direction="row" justify="center" alignItems="center" className={classes.counterRow}>
+
                     <Card className={classes.card}>
                         <Typography variant="h6" color="inherit">DEL</Typography>
-                        <Typography variant="h3" color="inherit">916</Typography>
+                        <Typography variant="h3" color="inherit"  key={counterData.del}>{this.props.counterData.del}</Typography>
                     </Card>
                     <Card className={classes.card}>
                         <Typography variant="h6" color="inherit">INT</Typography>
-                        <Typography variant="h3" color="inherit">916</Typography>
+                        <Typography variant="h3" color="inherit">{counterData.int}</Typography>
                     </Card>
                     <Card className={classes.card}>
                         <Typography variant="h6" color="inherit">OOD</Typography>
-                        <Typography variant="h3" color="inherit">916</Typography>
+                        <Typography variant="h3" color="inherit">{counterData.ood}</Typography>
                     </Card>
                     <Card className={classes.card}>
                         <Typography variant="h6" color="inherit">DEX</Typography>
-                        <Typography variant="h3" color="inherit">916</Typography>
+                        <Typography variant="h3" color="inherit">{counterData.dex}</Typography>
                     </Card>
                     <Card className={classes.card}>
                         <Typography variant="h6" color="inherit">NFI</Typography>
-                        <Typography variant="h3" color="inherit">916</Typography>
+                        <Typography variant="h3" color="inherit">{counterData.nfi}</Typography>
                     </Card>
                 </Grid>
             </div>
