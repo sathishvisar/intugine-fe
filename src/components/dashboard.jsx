@@ -1,5 +1,6 @@
 import React from "react";
 import Grid from '@material-ui/core/Grid';
+import { ClipLoader } from 'react-spinners';
 
 //Components
 import ToolBar from './toolbar';
@@ -7,10 +8,10 @@ import Counter from './counter';
 import Shipments from './shipments';
 import Timeline from './timeline';
 
-
 class Dashboard extends React.Component {
 
     state = {
+        loading: false,
         userInfo:{
             name: '',
             email: '',
@@ -31,6 +32,7 @@ class Dashboard extends React.Component {
 
     //GET Shipments
     getShipments(){
+        this.setState({ loading : true});
         let url = "https://93870v1pgk.execute-api.ap-south-1.amazonaws.com/latest/shipments/sathish.visar";
         let bearer_token = 'tTU3gFVUdP';
         let bearer = 'Bearer ' + bearer_token;
@@ -54,9 +56,13 @@ class Dashboard extends React.Component {
                 return state;
             })
             this.counterData();
+            this.state.loading = false;
+            this.setState({ loading : false});
         })
         .catch((error) => {
             console.error(error);
+            this.setState({ loading : false});
+
         });
     }
 
@@ -123,6 +129,19 @@ class Dashboard extends React.Component {
                     </Grid>
 
                 </Grid>
+
+                {this.state.loading && (
+                 <div className='sweet-loading'>
+                    <ClipLoader
+                    sizeUnit={"px"}
+                    size={100}
+                    color={'#123abc'}
+                    loading={this.state.loading}
+                    />
+                </div> 
+                )}
+
+                
 
             </div>
         )
