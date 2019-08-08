@@ -8,17 +8,6 @@ const styles = theme => ({
   
 });
 
-const ChildNav = ({ times }) => {
-    return(
-        <ul>
-            <h4>Rendering...</h4>
-            {/* {times.map((data, i) => {
-                return <li key={i}><a href="#">{i}</a></li>
-            })} */}
-        </ul>
-    )
-}
-
 class Timeline extends React.Component {
 
     
@@ -29,7 +18,7 @@ class Timeline extends React.Component {
         const items = timelineData.map((item, key) =>
             <li key={key}>
                 <div className={"bullet blue"}></div>
-                <div className={"desc"}>
+                <div className={"desc" + " desc_"+key}>
                     <span className={"state"}>{item.status_detail}</span>
                     <span>
                         <span className={"date"}>{Moment(item.time).format('L')} </span>

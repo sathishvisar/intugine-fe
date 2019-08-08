@@ -13,7 +13,7 @@ const styles = theme => ({
         width: '100%',
         //marginTop: theme.spacing(3),
         overflowX: 'auto',    
-        maxHeight: "50vh"
+        maxHeight: "calc( 100vh - 270px)"
       },
       table: {
         //minWidth: 320,
@@ -27,12 +27,7 @@ class Shipments extends React.Component {
     state = {
         selectedRow:0
     }
-    
-    handleClick = (data) => {
-        console.log(data);
-        this.setState({selectedRow:1})
-    }
-
+ 
     render(){
         const { classes, shipmentData, selectedRow } = this.props;
 
@@ -56,7 +51,7 @@ class Shipments extends React.Component {
                         <TableBody>
                             {/* awb_no, tran, src, dest, brand, sdate, etd, state */}
                         {shipmentData.map( (row,i) => (
-                            <TableRow key={i}>
+                            <TableRow key={i} onClick={() => selectedRow(row)}>
                                 {/* AWB Number */}
                                 <TableCell component="th" scope="row">
                                     <span onClick={() => selectedRow(row)}>#{row.awbno}</span>

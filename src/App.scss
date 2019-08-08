@@ -11,6 +11,8 @@ table{
   tbody{
 
     tr{
+      &:nth-child(even) {background-color: #f2f2f2;}
+
       td {
         font-size: 12px !important;
         .DEL {
@@ -39,7 +41,17 @@ table{
   align-items: center;
 }
 
+._counterCard{
 
+  &:hover{
+        background: #2e5bff;
+        color: #d5deff;
+  }
+}
+
+.tlHeading{
+  text-align: center;
+}
 
 // Timeline UI
 $black: #202020;
@@ -63,7 +75,7 @@ $orange: #EB8B6E;
     border-radius: 50%;
    }
    &::before{
-    top: -30px;
+    top: -10px;
     background-image: url("./assets/flag.png");
     background-size: 15px auto;
     background-repeat: no-repeat;
@@ -96,7 +108,20 @@ $orange: #EB8B6E;
     z-index: -1;
     border-left: 2px dotted #2e5bff;
     }
+
+    li{
+      &:nth-child(1){
+         
+        .desc{
+          background: #d5deff !important;
+          span{
+            color: #66BB6A;
+          }
+        }
+      }
+    }
   }
+  
   
   li div{
     display: inline-block;

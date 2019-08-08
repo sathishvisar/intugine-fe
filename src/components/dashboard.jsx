@@ -130,7 +130,7 @@ class Dashboard extends React.Component {
                 <Grid item container >
 
                     {/* Timeline */}
-                    <Grid  item xs={4} style={
+                    <Grid  item  xs={12} md={4} style={
                         this.state.selectedRow.length > 0
                         ? {
                             'display': 'block',
@@ -141,10 +141,9 @@ class Dashboard extends React.Component {
                     }>
                         <Timeline timelineData={this.state.selectedRow} />
                     </Grid>
-                    {/* this.state.selectedRow.length > 0 ? 4 : 0 */}
-
+ 
                     {/* Shipments */}
-                    <Grid item  xs={this.state.selectedRow.length > 0 ? 8 : 12}>
+                    <Grid item xs={12} md={this.state.selectedRow.length > 0 ? 8 : 12}>
                         <Shipments 
                         selectedRow={ this.funSelectedRow }
                         shipmentData={ this.state.shipments } />
