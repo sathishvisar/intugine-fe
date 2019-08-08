@@ -34,7 +34,7 @@ class Dashboard extends React.Component {
     funSelectedRow = (data)  =>{
         console.log(data);
         this.setState({
-            selectedRow: data
+            selectedRow: data.scan
         });
     }
 
@@ -130,12 +130,21 @@ class Dashboard extends React.Component {
                 <Grid item container >
 
                     {/* Timeline */}
-                    <Grid  item xs={4}>
+                    <Grid  item xs={4} style={
+                        this.state.selectedRow.length > 0
+                        ? {
+                            'display': 'block',
+                          }
+                        : {
+                            'display': 'none',
+                          }
+                    }>
                         <Timeline timelineData={this.state.selectedRow} />
                     </Grid>
+                    {/* this.state.selectedRow.length > 0 ? 4 : 0 */}
 
                     {/* Shipments */}
-                    <Grid item  xs={8}>
+                    <Grid item  xs={this.state.selectedRow.length > 0 ? 8 : 12}>
                         <Shipments 
                         selectedRow={ this.funSelectedRow }
                         shipmentData={ this.state.shipments } />

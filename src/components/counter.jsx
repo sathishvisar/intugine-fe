@@ -28,7 +28,6 @@ class Counter extends React.Component {
 
     render(){
         const { classes, counterData } = this.props;
-        console.log(counterData);
 
         return(
             <div>
