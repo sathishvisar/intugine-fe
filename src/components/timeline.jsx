@@ -14,7 +14,45 @@ class Timeline extends React.Component {
 
         return(
             <div>
-               <h2>Timeline</h2>
+                {/* <h3>AWB NUMBER	: #123456</h3> */}
+
+                 <div className={"timeline"}>
+                    <ul>
+                        <li>
+                            <div className={"bullet blue"}></div>
+                            <div className={"desc"}>
+                                <span className={"state"}>Delivered</span>
+                                <span className={"date"}>07/11/2019</span>
+                                <span className={"timing"}>14:00</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div className={"bullet blue"}></div>
+                            <div className={"desc"}>
+                                <span className={"state"}>Delivered</span>
+                                <span className={"date"}>07/11/2019</span>
+                                <span className={"timing"}>14:00</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div className={"bullet blue"}></div>
+                            <div className={"desc"}>
+                                <span className={"state"}>Delivered</span>
+                                <span className={"date"}>07/11/2019</span>
+                                <span className={"timing"}>14:00</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div className={"bullet blue"}></div>
+                            <div className={"desc"}>
+                                <span className={"state"}>Delivered</span>
+                                <span className={"date"}>07/11/2019</span>
+                                <span className={"timing"}>14:00</span>
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </div> 
             </div>
         )
     }

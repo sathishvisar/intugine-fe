@@ -6,36 +6,27 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Moment from 'moment';
 
 const styles = theme => ({
     root: {
         width: '100%',
         //marginTop: theme.spacing(3),
-        overflowX: 'auto',
+        overflowX: 'auto',    
+        maxHeight: "50vh"
       },
       table: {
         //minWidth: 320,
       },
 });
 
-function createData(awb_no, tran, src, dest, brand, sdate, etd, state) {
-    return { awb_no, tran, src, dest, brand, sdate, etd, state };
-  }
-  
-  const rows = [
-    createData(12345678, 'DTDC', 'Bangalore', 'Delhi', 'USPA' , '01/07/2019', '01/07/2019', 'OOD'),
-    createData(12345678, 'DTDC', 'Bangalore', 'Delhi', 'USPA' , '01/07/2019', '01/07/2019', 'OOD'),
-    createData(12345678, 'DTDC', 'Bangalore', 'Delhi', 'USPA' , '01/07/2019', '01/07/2019', 'OOD'),
-    createData(12345678, 'DTDC', 'Bangalore', 'Delhi', 'USPA' , '01/07/2019', '01/07/2019', 'OOD'),
-    createData(12345678, 'DTDC', 'Bangalore', 'Delhi', 'USPA' , '01/07/2019', '01/07/2019', 'OOD'),
-    createData(12345678, 'DTDC', 'Bangalore', 'Delhi', 'USPA' , '01/07/2019', '01/07/2019', 'OOD'),
-    createData(12345678, 'DTDC', 'Bangalore', 'Delhi', 'USPA' , '01/07/2019', '01/07/2019', 'OOD')
-  ];
+ 
 
 class Shipments extends React.Component {
     
+    
     render(){
-        const { classes } = this.props;
+        const { classes, shipmentData } = this.props;
 
         return(
             <div>
@@ -55,18 +46,32 @@ class Shipments extends React.Component {
                         </TableHead>
                         <TableBody>
                             {/* awb_no, tran, src, dest, brand, sdate, etd, state */}
-                        {rows.map( (row,i) => (
+                        {shipmentData.map( (row,i) => (
                             <TableRow key={i}>
+                                {/* AWB Number */}
                                 <TableCell component="th" scope="row">
-                                    #{row.awb_no}
+                                    #{row.awbno} 
                                 </TableCell>
-                                <TableCell align="right">{row.tran}</TableCell>
-                                <TableCell align="right">{row.src}</TableCell>
-                                <TableCell align="right">{row.dest}</TableCell>
-                                <TableCell align="right">{row.brand}</TableCell>
-                                <TableCell align="right">{row.sdate}</TableCell>
-                                <TableCell align="right">{row.etd}</TableCell>
-                                <TableCell align="right">{row.state}</TableCell>
+                                {/* Transporter */}
+                                <TableCell align="right">{row.carrier}</TableCell>
+                                {/* Source */}
+                                <TableCell align="right">{row.from}</TableCell>
+                                {/* Destination */}
+                                <TableCell align="right">{row.to}</TableCell>
+                                {/* Brand */}
+                                <TableCell align="right">{row.awbno}</TableCell>
+                                {/* Start Date */}
+                                <TableCell align="right">
+                                {   Moment(row.pickup_date).format('L')} 
+                                </TableCell>
+                                {/* ETD */}
+                                <TableCell align="right">{row.awbno}</TableCell>
+                                {/* Status */}
+                                <TableCell align="right">
+                                    <span className={row.current_status_code} >
+                                        {row.current_status}
+                                    </span>
+                                </TableCell>
                             </TableRow>
                         ))}
                         </TableBody>

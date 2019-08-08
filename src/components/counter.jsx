@@ -15,7 +15,11 @@ const styles = theme => ({
         margin: '0 10px',
         background: '#d5deff',
         color: '#2e5bff',
-        marginBottom: 15
+        marginBottom: 15,
+        // "& :hover":{
+        //     background: '#2e5bff',
+        //     color: '#d5deff',
+        // }
       },
 });
 

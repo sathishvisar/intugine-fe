@@ -11,6 +11,10 @@ import Timeline from './timeline';
 class Dashboard extends React.Component {
 
     state = {
+        userInfo:{
+            name: '',
+            email: '',
+        },
         shipments: [],
         counter: {
             del: 0,
@@ -43,7 +47,12 @@ class Dashboard extends React.Component {
         })
         .then((response) => response.json())
         .then((result) => {
-            this.setState({ shipments: result.data });
+            this.setState({ shipments : result.data })
+            this.setState( state => {
+                state.userInfo.email = result.email
+                state.userInfo.name = result.name
+                return state;
+            })
             this.counterData();
         })
         .catch((error) => {
@@ -63,25 +72,21 @@ class Dashboard extends React.Component {
         let INTData=  this.state.shipments.filter(function(row) {
             return row.current_status_code == 'INT';
         });
-        this.state.counter.int = INTData.length;
 
         //OOD Count
         let OODData=  this.state.shipments.filter(function(row) {
             return row.current_status_code == 'OOD';
         });
-        this.state.counter.ood = OODData.length;
 
         //DEX Count
         let DEXData=  this.state.shipments.filter(function(row) {
             return row.current_status_code == 'DEX';
         });
-        this.state.counter.dex = DEXData.length;
 
         //NFI Count
         let NFIData=  this.state.shipments.filter(function(row) {
             return row.current_status_code == 'NFI';
         });
-        this.state.counter.nfi = NFIData.length;
 
         this.setState( state => {
             state.counter.del = DELData.length;
@@ -108,13 +113,13 @@ class Dashboard extends React.Component {
                 <Grid item container >
 
                     {/* Timeline */}
-                    {/* <Grid   xs={3}>
+                    <Grid   xs={4}>
                         <Timeline/>
-                    </Grid> */}
+                    </Grid>
 
                     {/* Shipments */}
-                    <Grid item  xs={12}>
-                        <Shipments/>
+                    <Grid item  xs={8}>
+                        <Shipments shipmentData={ this.state.shipments } />
                     </Grid>
 
                 </Grid>

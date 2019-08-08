@@ -6,7 +6,8 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
-
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 //Assets
 import logo from './../assets/logo.svg';
 import profile from './../assets/profile.svg';
@@ -42,9 +43,11 @@ const styles = theme => ({
 
 class ToolBar extends React.Component {
 
+ 
     render(){
         const { classes } = this.props;
 
+         
         return(
             <div>
                 <AppBar position="static" className={classes.appBar}>
@@ -63,6 +66,7 @@ class ToolBar extends React.Component {
                                 <Button>Brands</Button>
                                 <Button>Transporters</Button>
                                 <Avatar alt="User" src={profile} className={classes.avatar}/>
+                                 
                             </Grid>
                         </Grid>
                     </Toolbar>
