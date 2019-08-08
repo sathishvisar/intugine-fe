@@ -1,6 +1,6 @@
 import React from "react";
 import Grid from '@material-ui/core/Grid';
-import { ClipLoader } from 'react-spinners';
+import { PulseLoader } from 'react-spinners';
 
 //Components
 import ToolBar from './toolbar';
@@ -9,21 +9,33 @@ import Shipments from './shipments';
 import Timeline from './timeline';
 
 class Dashboard extends React.Component {
+    constructor(props) {
+        super(props)
+        this.handler = this.funSelectedRow.bind(this);
 
-    state = {
-        loading: false,
-        userInfo:{
-            name: '',
-            email: '',
-        },
-        shipments: [],
-        counter: {
-            del: 0,
-            int: 0,
-            ood: 0,
-            dex: 0,
-            nfi: 0,
+        this.state= {
+            loading: false,
+            userInfo:{
+                name: '',
+                email: '',
+            },
+            shipments: [],
+            counter: {
+                del: 0,
+                int: 0,
+                ood: 0,
+                dex: 0,
+                nfi: 0,
+            },
+            selectedRow: []
         }
+    }
+
+    funSelectedRow = (data)  =>{
+        console.log(data);
+        this.setState({
+            selectedRow: data
+        });
     }
 
     componentDidMount() {
@@ -68,7 +80,6 @@ class Dashboard extends React.Component {
 
     //Filter Counter Data
     counterData(){
-        //console.log(this.state.shipments);
         //DEL Count
         let DELData=  this.state.shipments.filter(function(row) {
             return row.current_status_code == 'DEL';
@@ -119,22 +130,24 @@ class Dashboard extends React.Component {
                 <Grid item container >
 
                     {/* Timeline */}
-                    <Grid   xs={4}>
-                        <Timeline/>
+                    <Grid  item xs={4}>
+                        <Timeline timelineData={this.state.selectedRow} />
                     </Grid>
 
                     {/* Shipments */}
                     <Grid item  xs={8}>
-                        <Shipments shipmentData={ this.state.shipments } />
+                        <Shipments 
+                        selectedRow={ this.funSelectedRow }
+                        shipmentData={ this.state.shipments } />
                     </Grid>
 
                 </Grid>
 
                 {this.state.loading && (
                  <div className='sweet-loading'>
-                    <ClipLoader
+                    <PulseLoader
                     sizeUnit={"px"}
-                    size={100}
+                    size={15}
                     color={'#123abc'}
                     loading={this.state.loading}
                     />

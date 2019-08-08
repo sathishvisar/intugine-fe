@@ -23,11 +23,20 @@ const styles = theme => ({
  
 
 class Shipments extends React.Component {
-    
-    
-    render(){
-        const { classes, shipmentData } = this.props;
 
+    state = {
+        selectedRow:0
+    }
+    
+    handleClick = (data) => {
+        console.log(data);
+        this.setState({selectedRow:1})
+    }
+
+    render(){
+        const { classes, shipmentData, selectedRow } = this.props;
+
+     
         return(
             <div>
                 <Paper className={classes.root}>
@@ -50,7 +59,7 @@ class Shipments extends React.Component {
                             <TableRow key={i}>
                                 {/* AWB Number */}
                                 <TableCell component="th" scope="row">
-                                    #{row.awbno} 
+                                    <span onClick={() => selectedRow(row)}>#{row.awbno}</span>
                                 </TableCell>
                                 {/* Transporter */}
                                 <TableCell align="right">{row.carrier}</TableCell>

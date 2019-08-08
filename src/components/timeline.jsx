@@ -10,11 +10,11 @@ const styles = theme => ({
 class Timeline extends React.Component {
 
     render(){
-        //const { classes } = this.props;
+        const { classes, timelineData } = this.props;
 
         return(
             <div>
-                {/* <h3>AWB NUMBER	: #123456</h3> */}
+                {/* {JSON.stringify(this.props.timelineData, null, 2) } */}
 
                  <div className={"timeline"}>
                     <ul>
